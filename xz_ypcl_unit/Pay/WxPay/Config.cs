@@ -1,0 +1,36 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace xz_ypcl_unit.Pay.WxPay
+{
+    /**
+   * 	配置账号信息
+   */
+    public class WxPayConfig
+    {
+
+        private static volatile IConfig config;
+        private static object syncRoot = new object();
+
+        public static IConfig GetConfig()
+        {
+            if (config == null)
+            {
+                lock (syncRoot)
+                {
+                    if (config == null)
+                        config = new DemoConfig();
+                }
+            }
+            return config;
+        }
+
+
+
+
+
+    }
+}
